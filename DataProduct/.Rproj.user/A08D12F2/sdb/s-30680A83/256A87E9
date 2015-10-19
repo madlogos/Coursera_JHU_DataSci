@@ -1,0 +1,17 @@
+{
+    "contents" : "library(shiny);library(ggplot2)\n\nshinyServer(function(input,output){\n    subdata <- reactive({iris[iris$Species %in% input$species,]})\n    theme <- reactive({eval(parse(text=input$theme))})\n    \n    output$irisModel <- renderTable({\n        data <- subdata()\n        reg <- lm(Sepal.Width~Petal.Width,data=data)\n        as.data.frame(summary(reg)$coef)})\n    output$irisPlot <- renderPlot({\n        data <- subdata()\n        theme <- theme()\n        g <- ggplot(data,aes(x=Petal.Width,y=Sepal.Width))+\n            geom_point(aes(color=Species),size=6,alpha=0.4)+\n            stat_smooth(method=\"lm\",se=TRUE)+\n            xlab(\"Petal Width\")+ylab(\"Sepal Width\")+\n            ggtitle(\"Linear Reg of iris - Sepal Width vs Petal Width\")+\n            theme\n        print(g)\n    })\n})",
+    "created" : 1445153500814.000,
+    "dirty" : false,
+    "encoding" : "CP936",
+    "folds" : "",
+    "hash" : "4233039902",
+    "id" : "256A87E9",
+    "lastKnownWriteTime" : 1445268773,
+    "path" : "~/GitHub/Coursera_JHU_DataSci/DataProduct/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

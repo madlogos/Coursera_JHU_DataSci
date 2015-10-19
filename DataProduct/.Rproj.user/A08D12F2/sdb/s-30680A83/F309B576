@@ -1,0 +1,18 @@
+{
+    "contents" : "library(shiny);library(ggplot2)\nshinyUI(fluidPage(\n  titlePanel(\"Linear Regression Plot of Iris (Sepal.Width vs Petal.Width)\",\n             windowTitle=\"Iris - Sepal width vs Petal Width\"),\n  sidebarLayout(\n      sidebarPanel(     # Config controls\n          checkboxGroupInput(\"species\",\"Select species:\",\n              c(\"Setosa\" = \"setosa\",\n                \"Versicolor\" = \"versicolor\",\n                \"Virginica\" = \"virginica\"),\n              selected=c(\"setosa\",\"versicolor\")),\n          selectInput(\"theme\",\"Select a ggplot2 theme:\",\n                      c(\"Gray\" = \"theme_gray()\",\n                        \"Classic\" = \"theme_classic()\",\n                        \"BW\" = \"theme_bw()\",\n                        \"Light\" = \"theme_light()\",\n                        \"Linedraw\" = \"theme_linedraw()\",\n                        \"Minimal\" = \"theme_minimal()\")),\n          h3(\"Introduction\"),\n          p(\"This simple app fits a linear regression model of iris with a plot in ggplots\"),\n          h3(\"Usage\"),\n          p(\"1. Select 1 or more Species to subset the iris dataset.\"),\n          p(\"2. choose a theme.\"),\n          p(\"The regression model coef table as well as the plot will be updated automatically.\")\n      ),\n      mainPanel(        # results\n          strong(\"Coef. of Model Call:\"),\n          code(\"lm(Sepal.Width~Petal.Width)\"),\n          tableOutput(\"irisModel\"),\n          plotOutput(\"irisPlot\")\n      )\n  )\n))",
+    "created" : 1445153502987.000,
+    "dirty" : false,
+    "encoding" : "CP936",
+    "folds" : "",
+    "hash" : "3489150031",
+    "id" : "F309B576",
+    "lastKnownWriteTime" : 1445269480,
+    "path" : "~/GitHub/Coursera_JHU_DataSci/DataProduct/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+        "notebook_format" : "html_document"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
